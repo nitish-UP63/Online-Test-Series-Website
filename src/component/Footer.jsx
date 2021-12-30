@@ -10,7 +10,7 @@ function Footer() {
         <div className='main'>
             <div className='col1'>
              <h1>Reach to Us</h1>
-             <div> 
+             <div className='reach'> 
              <p>Email</p>
              <p>Contact</p>
             
@@ -18,7 +18,7 @@ function Footer() {
             </div>
             <div className='col2'>
             <h1>Category</h1>
-            <div>
+            <div className='category'>
                 <p>JEE Main</p>
                 <p>NEET</p>
                 <p>AKTU</p>
@@ -27,7 +27,7 @@ function Footer() {
             </div>
             <div className='col3' >
             <h1>Follow Us</h1>
-            <div>
+            <div className='follow'>
              <p>  <InstagramIcon  fontSize='5' />Instagram</p>
              <p>  <FacebookIcon fontSize='5' />   Facebook</p>
              <p>  <YouTubeIcon fontSize='5' />   Youtube</p>

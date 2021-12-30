@@ -34,9 +34,30 @@
 }
 
 @media (max-width: 533px) {
+    html,
+    body{
+    width:100%;
+    overflow-x:hidden;
+    }
     .main{
        flex-direction: column;
        height: auto; 
        width: 100%;
     }
+    .reach, .category, .follow{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .reach>p{
+       margin-left: 20px;
+    }
+    .category>p{
+        margin-left: 20px;
+     }
+     .follow>p{
+        margin-left: 20px;
+        margin-right: 10px;
+     }
 }
