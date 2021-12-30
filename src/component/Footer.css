@@ -11,6 +11,7 @@
     background-color: black;
     display: flex;
     justify-content: space-around;
+    flex-direction: row;
     color: white;
 }
 
@@ -30,4 +31,12 @@
 .col3 > h1{
     font-size: 20px;
     color: blue;
+}
+
+@media (max-width: 533px) {
+    .main{
+       flex-direction: column;
+       height: auto; 
+       width: 100%;
+    }
 }
