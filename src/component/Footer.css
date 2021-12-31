@@ -1,13 +1,14 @@
 .footer{
-    position:absolute;
+    position: relative;
     bottom:0;
     display:block;  
     width:100%;
 }
 .main{
     bottom: 0;
-    height: 150px;
+    height: auto;
     width: 100%;
+    padding-top: 20px;
     background-color: black;
     display: flex;
     justify-content: space-around;

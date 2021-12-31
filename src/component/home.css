@@ -1,5 +1,23 @@
+.test_category{
+     display: flex;
+     justify-content: space-evenly;
+     flex-direction: row;
+     align-items: center;
+     flex-wrap: wrap;
+}
+
 .heading>p{
     text-align: center;
     color:crimson;
-    font-size: 100px;
+    font-size: 40px;
+}
+
+@media (max-width: 533px) {
+    .test_category{
+        flex-direction: column;
+   }
+   .heading>p{
+    font-size: 20px;
+    padding-top: 10px;
+}
 }

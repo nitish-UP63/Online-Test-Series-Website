@@ -4,11 +4,18 @@ import Templet from "./Templet"
 
 function Home() {
     return (
-        <div className="heading">
+        <div>
+        <div className="heading"> 
             <p>Best Free online Test Series</p>
+            </div>
+        <div className="test_category">
             <Templet title={"IIT Jee"} img={require('../Images/jeelogo.jpg')} />
             <Templet title={"NEET"} img={require('../Images/neetlogo.jpg')} />
             <Templet title={"IIT Jee"} img={require('../Images/jeelogo.jpg')} />
+            <Templet title={"IIT Jee"} img={require('../Images/jeelogo.jpg')} />
+            <Templet title={"IIT Jee"} img={require('../Images/jeelogo.jpg')} />
+            <Templet title={"IIT Jee"} img={require('../Images/jeelogo.jpg')} />
+        </div>
         </div>
     )
 }
