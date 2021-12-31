@@ -19,7 +19,8 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/contactus" element={<ContactUs />} />
-        </Routes>
+        </Routes> 
+        
         <Footer />
       </BrowserRouter>
      

@@ -1,0 +1,52 @@
+.nav-heading {
+    color: white;
+    margin: auto 5px;
+    padding: 16px 32px;
+    
+  }
+
+  button {
+    min-height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border-color: white;
+    background-color: #86e383;
+    color: #fff;
+    font-size: 30px;
+    padding-bottom: 6px;
+    padding-right: 200px;
+    border-width: 0;
+  }
+
+  /* .navbar-toggler{
+      color: aliceblue !important;
+  } */
+
+  .container-fluid{
+      margin: 0px !important;
+      padding: 0px !important;
+  }
+
+  .customNavbar{
+    display: flex;
+    background-color: #3F3351;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100% ;
+  }
+
+  .nav-links {
+    display: flex;
+    text-align-last: right !important;
+  }
+  .navitem a{
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white;
+  }
+  nav li{
+	list-style: none;
+}

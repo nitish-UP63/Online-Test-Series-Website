@@ -1,27 +1,37 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
+import "./navbar.css"
+import { NavLink } from "react-router-dom";
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 function Navbar() {
     return (
+        
+        <div className="container-fluid">
+            <nav className="customNavbar navbar-expand-lg ">
 
-        <nav class="navbar">
-            <div>
-                {/* <img src='https://i0.wp.com/www.psdly.com/wp-content/uploads/2021/04/Metal-Logo-Mockup-1.jpg?resize=750%2C500&ssl=1'></img> */}
-                <h1 class="nav-heading">Test Series</h1>
-            </div>
+                <div>
 
-            <div class="flex container">
-                <ul class="nav-links">
-                    <li class="navitem"> <NavLink to="/">Home</NavLink></li>
-                    <li class="navitem"> <NavLink to="/aboutus">About Us</NavLink></li>
-                    <li class="navitem"> <NavLink to="/contactus">Contact Us</NavLink> </li>
-                    <li class="navitem"> <NavLink to="/login">Login</NavLink> </li>
-                    <li class="navitem">  <NavLink to="/register">Register</NavLink>  </li>
-                    
-                </ul>
-            </div>
+                    <h1 className="nav-heading">Test Series</h1>
+                </div>
 
-        </nav>
+                <button class="btn-dark navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div className="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul className="navbar-nav ms-auto">
+                        <li className="navitem navbar-item"> <NavLink to="/">Home</NavLink></li>
+                        <li className="navitem navbar-item"> <NavLink to="/aboutus">About Us</NavLink></li>
+                        <li className="navitem navbar-item"> <NavLink to="/contactus">Contact Us</NavLink> </li>
+                        <li className="navitem navbar-item"> <NavLink to="/login">Login</NavLink> </li>
+                        <li className="navitem navbar-item">  <NavLink to="/register">Register</NavLink>  </li>
+
+                    </ul>
+                </div>
+
+            </nav>
+        </div>
+
     );
 }
 
