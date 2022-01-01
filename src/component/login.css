@@ -1,0 +1,28 @@
+.mainform{
+    background-color: #DFD8CA;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding-right: 100px;
+    
+}
+
+.form{
+    width: 350px;
+    border-radius: 10px;
+    background-color: #FBF3E4;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    border: 2px solid black;
+    padding: 20px;
+    
+}
+
+
+/* .custombtn{
+    height: 50px;
+    word-wrap: break-word;
+    width: auto;
+    width:fit-content; 
+    
+} */
