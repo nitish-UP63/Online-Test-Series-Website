@@ -25,6 +25,7 @@ function Navbar() {
                         <li className="navitem navbar-item"> <NavLink to="/contactus">Contact Us</NavLink> </li>
                         <li className="navitem navbar-item"> <NavLink to="/login">Login</NavLink> </li>
                         <li className="navitem navbar-item">  <NavLink to="/register">Register</NavLink>  </li>
+                        <li className="navitem navbar-item">  <NavLink to="/profile">Profile</NavLink>  </li>
 
                     </ul>
                 </div>

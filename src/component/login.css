@@ -18,6 +18,16 @@
     
 }
 
+@media (max-width: 533px) {
+    .mainform{
+        flex-direction: column;
+    }
+    img{   
+        height: 300px;
+        width: 300px;
+    }
+}
+
 
 /* .custombtn{
     height: 50px;

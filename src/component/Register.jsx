@@ -8,8 +8,8 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 function Register() {
     return (
         <div className="mainform">
-        <div style={{display:"flex",alignItems:"center"}}>
-            <img  src={require('../Images/loginimg.png')}></img>
+        <div className='loginimg' style={{display:"flex",alignItems:"center"}}>
+            <img style={{position:"relative"}} src={require('../Images/loginimg.png')}></img>
         </div>
         <div className="form">
             <Form>
@@ -35,8 +35,8 @@ function Register() {
                 Submit
             </Button>
             <div style={{display:"flex",flexDirection:"column",alignItems:"center",marginTop:15}}>
-            <Button className="custombtn" style={{margin:5}} variant="outline-primary" size="lg">Sign in with <GoogleIcon /></Button>
-            <Button className="custombtn" style={{margin:5}} variant="outline-primary" size="lg">Sign in with <FacebookIcon /></Button>    
+            <Button class="mt-5 text-center" className="custombtn" style={{margin:5}} variant="outline-primary" size="lg">Sign in with <GoogleIcon /></Button>
+            <Button class="mt-5 text-center" className="custombtn" style={{margin:5}} variant="outline-primary" size="lg">Sign in with <FacebookIcon /></Button>    
             </div>
         </Form>
         </div>
