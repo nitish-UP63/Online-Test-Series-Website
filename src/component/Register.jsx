@@ -14,7 +14,6 @@ function Register() {
         email: '',
         password: ''
     })
-
     const handlechange=(event)=>{
         const {name, value} = event.target;
         setuserdetail(preValue=>{
