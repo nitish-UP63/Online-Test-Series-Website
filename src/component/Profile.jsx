@@ -5,37 +5,37 @@ import "./profile.css"
 export default function Profile() {
     return (
         <div>
-            <div class="container rounded bg-white mt-5 mb-5">
-                <div class="row">
-                    <div class="col-md-3 border-right">
-                        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" /><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
+            <div classNameName="container rounded bg-white mt-5 mb-5">
+                <div classNameName="row">
+                    <div classNameName="col-md-3 border-right">
+                        <div classNameName="d-flex flex-column align-items-center text-center p-3 py-5"><img classNameName="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" /><span classNameName="font-weight-bold">Edogaru</span><span classNameName="text-black-50">edogaru@mail.com.my</span><span> </span></div>
                     </div>
-                    <div class="col-md-5 border-right">
-                        <div class="p-3 py-5">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="text-right">Profile Settings</h4>
+                    <div classNameName="col-md-5 border-right">
+                        <div classNameName="p-3 py-5">
+                            <div classNameName="d-flex justify-content-between align-items-center mb-3">
+                                <h4 className="text-right">Profile Settings</h4>
                             </div>
-                            <div class="row mt-2">
-                                <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name"  /></div>
-                                <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" placeholder="surname" /></div>
+                            <div className="row mt-2">
+                                <div className="col-md-6"><label className="labels">Name</label><input type="text" className="form-control" placeholder="first name"  /></div>
+                                <div className="col-md-6"><label className="labels">Surname</label><input type="text" className="form-control" placeholder="surname" /></div>
                             </div>
-                            <div class="row mt-3">
-                                <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number"  /></div>
-                                <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" placeholder="address"  /></div>
+                            <div className="row mt-3">
+                                <div className="col-md-12"><label className="labels">Mobile Number</label><input type="text" className="form-control" placeholder="enter phone number"  /></div>
+                                <div className="col-md-12"><label className="labels">Address</label><input type="text" className="form-control" placeholder="address"  /></div>
                                 
                                 
-                                <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id"  /></div>
-                                <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education"  /></div>
-                                <div class="col-md-12"><label class="labels">Target</label><input type="text" class="form-control" placeholder="Prepairing for which paper"  /></div>
+                                <div className="col-md-12"><label className="labels">Email ID</label><input type="text" className="form-control" placeholder="enter email id"  /></div>
+                                <div className="col-md-12"><label className="labels">Education</label><input type="text" className="form-control" placeholder="education"  /></div>
+                                <div className="col-md-12"><label className="labels">Target</label><input type="text" className="form-control" placeholder="Prepairing for which paper"  /></div>
                             </div>
-                            <div class="row mt-3">
-                            <div class="col-md-6"><label class="labels">Pin Code</label><input type="text" class="form-control" placeholder="pin Code"  /></div>
-                                <div class="col-md-6"><label class="labels">City</label><input type="text" class="form-control" placeholder="city"  /></div>
-                                <div class="col-md-6"><label class="labels">State</label><input type="text" class="form-control" placeholder="state"  /></div>
-                                <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country"  /></div>
+                            <div className="row mt-3">
+                            <div className="col-md-6"><label className="labels">Pin Code</label><input type="text" className="form-control" placeholder="pin Code"  /></div>
+                                <div className="col-md-6"><label className="labels">City</label><input type="text" className="form-control" placeholder="city"  /></div>
+                                <div className="col-md-6"><label className="labels">State</label><input type="text" className="form-control" placeholder="state"  /></div>
+                                <div className="col-md-6"><label className="labels">Country</label><input type="text" className="form-control" placeholder="country"  /></div>
                 
                             </div>
-                            <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                            <div className="mt-5 text-center"><button className="btn btn-primary profile-button" type="button">Save Profile</button></div>
                         </div>
                     </div>
                 </div>
