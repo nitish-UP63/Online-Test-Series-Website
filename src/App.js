@@ -2,14 +2,15 @@ import React from 'react'
 import Footer from './component/Footer'
 import AboutUs from "./component/AboutUs"
 import Navbar from './component/Navbar'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from './component/Login';
 import Register from './component/Register';
 import Home from './component/Home';
 import ContactUs from './component/ContactUs';
 import Profile from './component/Profile';
+import { useSelector } from 'react-redux';
 export default function App() {
-
+  const isloggedin=useSelector((state)=> state.set_user_state);
   return (
     <>
       <BrowserRouter>
@@ -20,7 +21,8 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/contactus" element={<ContactUs />} />
-          <Route path="/profile" element={<Profile />} />
+          { isloggedin ?  <Route path="/profile" element={<Profile />} /> :  <Route path="/login" element={<Login />} />
+          }
       
         </Routes> 
         

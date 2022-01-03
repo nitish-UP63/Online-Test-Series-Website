@@ -7,9 +7,13 @@ import { doc, getDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { Button } from "react-bootstrap";
 import logout from "./logout";
- 
+import {useSelector, useDispatch} from 'react-redux';
+import {Setuserstate, Setuserdata} from '../actions/index';
+
 function Navbar() {
-  const [islogged, setlogged] = useState(false);
+  const dispatch= useDispatch();
+  const initstate=useSelector((state)=> state.set_user_state);
+  const [islogged, setlogged] = useState(initstate);
   const [isloading, setloading]= useState(true);
   const [data, setdata] = useState();
   
@@ -19,11 +23,13 @@ function Navbar() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setlogged(true);
+        dispatch(Setuserstate(true));
         const uid = user.uid;
         getDoc(doc(DB, "users", uid)).then((docSnap) => {
           if (docSnap.exists()) {
-            console.log("Document data:", docSnap.data());
+          //  console.log("Document data:", docSnap.data());
             setdata(docSnap.data());
+            dispatch(Setuserdata(docSnap.data()));
             setloading(false)
           } else {
             console.log("No such document!");
@@ -66,14 +72,17 @@ function Navbar() {
               {" "}
               <NavLink to="/contactus">Contact Us</NavLink>{" "}
             </li>
-            {islogged ? (
-             <><> {isloading? <p>hmm</p> : <p>Hello {data.name}</p> } </>
-              <Button onClick={()=>{
-                  logout();
-                    setlogged(false);
-                    alert("Successfully Logged Out")
-                  }} >Logout</Button> </>
-            ) : (
+            { islogged ? <>
+             {isloading ? <p>hmm</p> : <>
+            <li className="navitem navbar-item">
+              <NavLink to="/profile">Profile</NavLink>
+            </li>
+            <li className="navitem navbar-item">
+              <Button onClick={()=>{ logout(); setlogged(false); dispatch(Setuserstate(false)); alert("Logged Out Successfully")}}>Logout</Button>
+            </li>
+            </>
+            }
+            </> : (
               <>
                 {" "}
                 <li className="navitem navbar-item">
