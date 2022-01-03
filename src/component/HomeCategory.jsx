@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 export default function HomeCategory() {
     return (
@@ -7,7 +8,9 @@ export default function HomeCategory() {
             <h1>IIT JEE</h1>
             <br />
                 <div class="list-group col-md-8">
+                <NavLink to="/QuestionPage">
                     <a href="#" class="list-group-item">JEE Main 2021</a>
+                    </NavLink>
                     <a href="#" class="list-group-item">JEE Main 2020</a>
                     <a href="#" class="list-group-item">JEE Main 2019</a>
                     <a href="#" class="list-group-item">JEE Main 2018</a>
