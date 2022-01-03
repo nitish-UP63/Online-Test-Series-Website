@@ -37,7 +37,7 @@ function Navbar() {
     <div className="container-fluid">
       <nav className="customNavbar navbar-expand-lg ">
         <div>
-          <h1 className="nav-heading">Test Series</h1>
+          <h1 className="nav-heading">Online Test Series</h1>
         </div>
 
         <button
