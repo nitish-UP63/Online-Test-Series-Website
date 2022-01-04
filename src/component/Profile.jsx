@@ -25,11 +25,7 @@ export default function Profile() {
                             </div>
                             <div className="row mt-3">
                                 <div className="col-md-6"><label className="labels">Mobile Number</label><input type="text" className="form-control" placeholder="enter phone number"  /></div>
-                               
-                                
-                                
-                                <div className="col-md-6"><label className="labels">Email ID</label><input type="text" className="form-control" placeholder="enter email id"  /></div>
-                               
+                                <div className="col-md-6"><label className="labels">Email ID</label><input type="text" className="form-control" placeholder="enter email id"  /></div>  
                                 <div className="col-md-6"><label className="labels">Target</label><input type="text" className="form-control" placeholder="Prepairing for which exam"  /></div>
                                 <div className="col-md-6"><label className="labels">City</label><input type="text" className="form-control" placeholder="city"  /></div>
                             </div>
