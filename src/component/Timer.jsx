@@ -1,4 +1,4 @@
-import { textAlign } from '@mui/system';
+import { positions, textAlign } from '@mui/system';
 import React, { useState, useEffect } from 'react'
 
 export default function Timer(props) {
@@ -33,7 +33,7 @@ export default function Timer(props) {
 
 
     return (
-        <div className="col-md-2" style={{border:"solid", textAlign:"center" }}>
+        <div  >
             <div>Time Left - {minutes} min : {seconds} s</div>
             <div className='row'>
                 {/* <button className='btn btn-primary' >{isActive ? 'Pause' : 'Start'}</button>
