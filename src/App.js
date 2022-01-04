@@ -25,7 +25,9 @@ export default function App() {
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/HomeCategory" >
-           <Route path=":papertitle"   element={<HomeCategory />} />
+           <Route path=":papertitle"   element={<HomeCategory />} >
+            <Route />
+           </Route>
           </Route>
           <Route path="/QuestionPage" element={<QuestionPage />} />
           { isloggedin ?  <Route path="/profile" element={<Profile />} /> :  <Route path="/profile" element={<Navigate replace to="/login" />} />
