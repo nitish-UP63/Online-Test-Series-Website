@@ -77,6 +77,7 @@ getDoc( doc(db, "users", uid)).then(docSnap => {
                     value={update.name}
                     onChange={handlechange}
                   />
+
                 </div>
               </div>
               <div className="row mt-3">
