@@ -8,7 +8,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { Button } from "react-bootstrap";
 import logout from "./logout";
 import {useSelector, useDispatch} from 'react-redux';
-import {Setuserstate, Setuserdata} from '../actions/index';
+import {Setuserstate, Setuserdata, Setuid} from '../actions/index';
 
 function Navbar() {
   const dispatch= useDispatch();
@@ -30,6 +30,7 @@ function Navbar() {
           //  console.log("Document data:", docSnap.data());
             setdata(docSnap.data());
             dispatch(Setuserdata(docSnap.data()));
+            dispatch(Setuid(uid));
             setloading(false)
           } else {
             console.log("No such document!");

@@ -4,7 +4,7 @@ import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { doc, setDoc, Timestamp } from "firebase/firestore";
 import db from './firebase';
 import {useNavigate} from 'react-router-dom';
@@ -45,6 +45,40 @@ function Register() {
         // ..
       });
   };
+
+//////////////////google login
+function login_with_google(){
+  
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      console.log(user.providerData[0].displayName);
+      setDoc(doc(db, "users", user.uid), {
+        name: user.providerData[0].displayName,
+        email: user.providerData[0].email,
+        url : user.providerData[0].photoURL
+      });
+      
+      // ...
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+    });
+  }
+  ////////////////////
+  
 
   return (
     <div className="mainform">
@@ -93,16 +127,9 @@ function Register() {
               style={{ margin: 5 }}
               variant="outline-primary"
               size="lg"
+              onClick={login_with_google}
             >
               Sign in with <GoogleIcon />
-            </Button>
-            <Button
-              className="custombtn"
-              style={{ margin: 5 }}
-              variant="outline-primary"
-              size="lg"
-            >
-              Sign in with <FacebookIcon />
             </Button>
           </div>
         </Form>
