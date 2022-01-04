@@ -54,7 +54,8 @@ export default function QuestionPage() {
 
 
     return (
-        <div style={{overflow:"hidden"}}>
+
+        <div style={{overflow: 'hidden'}}>
             <div className='row d-flex justify-content-between align-items-center'>
              {inst ? <><div className='col-md-8 border-right d-flex flex-column' >
           { 
