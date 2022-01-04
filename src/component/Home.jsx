@@ -9,12 +9,12 @@ function Home() {
             <p>Best Free online Test Series</p>
             </div>
         <div className="test_category">
-            <Templet title={"IIT Jee"} img={require('../Images/jeelogo.jpg')} />
-            <Templet title={"NEET"} img={require('../Images/neetlogo.jpg')} />
-            <Templet title={"IIT Jee"} img={require('../Images/jeelogo.jpg')} />
-            <Templet title={"IIT Jee"} img={require('../Images/jeelogo.jpg')} />
-            <Templet title={"IIT Jee"} img={require('../Images/jeelogo.jpg')} />
-            <Templet title={"IIT Jee"} img={require('../Images/jeelogo.jpg')} />
+            <Templet title={"IITJee"} img={require('../Images/jeelogo.jpg')} />
+            <Templet title={"NEET"} img={require('../Images/neetlogo.jpg')}  />
+            <Templet title={"JeeMain"} img={require('../Images/jeelogo.jpg')} />
+            <Templet title={"Bits"} img={require('../Images/jeelogo.jpg')} />
+            <Templet title={"IITJee"} img={require('../Images/jeelogo.jpg')} />
+            <Templet title={"IITJee"} img={require('../Images/jeelogo.jpg')} />
         </div>
         </div>
     )

@@ -7,8 +7,9 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc, Timestamp } from "firebase/firestore";
 import db from './firebase';
-
+import {useNavigate} from 'react-router-dom';
 function Register() {
+  const navigate=useNavigate();
     const [userdetail, setuserdetail] = useState({
         name: '',
         email: '',
@@ -36,6 +37,7 @@ function Register() {
             email: userdetail.email,
             password: userdetail.password
           });
+        navigate("/")  
       })
       .catch((error) => {
         const errorCode = error.code;

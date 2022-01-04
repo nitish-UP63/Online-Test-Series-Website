@@ -5,10 +5,12 @@ import { Button } from "react-bootstrap";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import DB from "./firebase";
-import { onSnapshot, collection, doc, getDoc } from "firebase/firestore";
+import {doc, getDoc } from "firebase/firestore";
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import {useNavigate} from 'react-router-dom';
 
 function Login() {
+  const navigate= useNavigate();
   const [logindetail, setlogindetail]= useState({
       email: '',
       password: ''
@@ -29,8 +31,9 @@ const handlechange=(event)=>{
   signInWithEmailAndPassword(auth, logindetail.email, logindetail.password)
     .then((userCredential) => {
       // Signed in
-      const user = userCredential.user;
-      console.log(user);
+      // const user = userCredential.user;
+      // console.log(user);
+      navigate("/");
       setlogindetail(()=>{
           return {  email: '', password: ''
       }

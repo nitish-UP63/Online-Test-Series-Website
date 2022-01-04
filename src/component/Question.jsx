@@ -3,10 +3,10 @@ import React from 'react'
 export default function Question(props) {
 
     function handleOnClickPrevious(){
-
+         props.onClickPrevious();
     }
     function handleOnClickNext(){
-        props.onClickNext(props.QuesNo);
+        props.onClickNext();
 
     }
     function handleOnClickSubmit(){
