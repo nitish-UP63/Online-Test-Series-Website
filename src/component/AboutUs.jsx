@@ -3,7 +3,7 @@ import "./aboutUs.css"
 
 function AboutUs() {
     return (
-        <div >
+        <div style={{overflow: 'hidden'}} >
         <div className="container rounded bg-white mt-5 mb-5" className='aboutus'>
         <img width="100%" src={require('../Images/Aboutus.jpg')} />
         <div className="row">
