@@ -5,3 +5,7 @@ export const Setuserstate = state => {
 export const Setuserdata = data => {
     return {type: 'User_data', data: data};
   };
+
+  export const Setuid = id => {
+    return {type: 'User_id', id: id};
+  };
