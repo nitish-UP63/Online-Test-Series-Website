@@ -8,7 +8,7 @@ import Timer from "./Timer.jsx";
 
 export default function QuestionPage() {
   const [inst, setinst] = useState(false);
-  const [ques, setques] = useState();
+  const [ques, setques] = useState([]);
   const [tempques, settempques] = useState({
     Question: "",
     oA: "",
@@ -18,6 +18,12 @@ export default function QuestionPage() {
     ans: "",
     id: 0,
   });
+
+  const [response, setResponse] = useState([]);
+  const answers = [];
+
+  
+  
 
   function previousQues(QuesNo) {
     if (QuesNo > 1) {
@@ -33,6 +39,21 @@ export default function QuestionPage() {
   }
 
   function finalSubmit(QuesNo) {}
+
+  function optionClicked(optionSelected, quesNo) {
+    console.log(optionSelected);
+    console.log(quesNo);
+    response[quesNo] = optionSelected;
+    console.log(answers[quesNo]);
+    console.log(response[quesNo]);
+    //   if(optionSelected === tempques.ans){
+    //       x = 1;
+    //   }else{
+    //       x = -1;
+
+    //   }';
+  }
+
   useEffect(() => {
     getDoc(doc(DB, "question_paper", "JeeMain2021")).then((docSnap) => {
       if (docSnap.exists()) {
@@ -42,28 +63,38 @@ export default function QuestionPage() {
         setques(ques);
         settempques({ ...ques[0] });
         console.log(tempques);
+        checkAnswer();
+        console.log("vskjvbjk",answers)
       } else {
         console.log("No such document!");
       }
     });
+
   }, []);
 
+
+  function checkAnswer(){
+    ques.map((item) => {answers.push(item.ans)}); 
+    }
+
+ 
   return (
+    
     <div style={{ overflow: "hidden" }}>
+    
       <div className="row d-flex justify-content-between align-items-center">
         {inst ? (
           <>
             <div
               className="col-md-2"
               style={{
-                  marginLeft:-250,
-                  marginBottom:-160, 
-                  width : "100%",
-                  height :32,
+                marginLeft: -250,
+                marginBottom: -160,
+                width: "100%",
+                height: 32,
                 // border: "solid",
-                display:"flex",
-                justifyContent:"flex-end"
-
+                display: "flex",
+                justifyContent: "flex-end",
               }}
             >
               <Timer minutes={60} />
@@ -79,6 +110,7 @@ export default function QuestionPage() {
                   Option3={tempques.oC}
                   Option4={tempques.oD}
                   onClickNext={() => nextQues(tempques.id)}
+                  optionChecked={optionClicked}
                   onClickPrevious={() => {
                     previousQues(tempques.id);
                   }}

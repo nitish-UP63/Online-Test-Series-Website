@@ -3,7 +3,7 @@
     bottom:0;
     display:block;  
     width:100%;
-    /* z-index: 1; */
+    /* z-index:-1; */
 }
 .main{
     bottom: 0;
@@ -15,8 +15,6 @@
     justify-content: space-around;
     flex-direction: row;
     color: white;
-    
-
 }
 
 .col1,.col2,.col3{
