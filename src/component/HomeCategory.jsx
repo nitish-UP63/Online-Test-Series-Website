@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, Outlet } from "react-router-dom";
 
 export default function HomeCategory() {
     const params = useParams();
@@ -42,8 +42,8 @@ export default function HomeCategory() {
 
                                 (item.years.map((item2, index) => {
                                     return (
-                                        <Link key={index} to="/QuestionPage" className="list-group-item" >
-                                            {item.id}  {item2}
+                                        <Link key={index} to={`/HomeCategory2/${params.papertitle}/${item.id+item2}`} className="list-group-item" >
+                                           { item.id+item2 }
                                         </Link>
                                     )
                                 }))
@@ -57,6 +57,7 @@ export default function HomeCategory() {
                 </div>
 
             </div>
+            {/* <Outlet /> */}
         </div>
     );
 }
