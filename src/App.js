@@ -13,7 +13,7 @@ import HomeCategory from './component/HomeCategory';
 import QuestionPage from './component/QuestionPage';
 export default function App() {
   const isloggedin=useSelector((state)=> state.set_user_state);
-  const {papertitle}= useParams();
+   const {papertitle, paperyear}= useParams();
   return (
     <>
       <BrowserRouter>
@@ -25,11 +25,16 @@ export default function App() {
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/HomeCategory" >
-           <Route path=":papertitle"   element={<HomeCategory />} >
-            <Route />
+           <Route path=":papertitle" element={<HomeCategory />} >
+            <Route path=":paperyear" element={ <QuestionPage />} />
            </Route>
           </Route>
-          <Route path="/QuestionPage" element={<QuestionPage />} />
+          <Route path="/HomeCategory2" >
+           <Route path=":papertitle">
+            <Route path=":paperyear" element={ <QuestionPage />} />
+           </Route>
+          </Route>
+          {/* <Route path="/QuestionPage" element={<QuestionPage />} /> */}
           { isloggedin ?  <Route path="/profile" element={<Profile />} /> :  <Route path="/profile" element={<Navigate replace to="/login" />} />
           }
       
