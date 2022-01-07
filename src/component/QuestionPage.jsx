@@ -4,8 +4,11 @@ import DB from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
 import "./questionPage.css";
 import Timer from "./Timer.jsx";
+import { useNavigate } from "react-router-dom"; 
+import Instructions from "./Instructions.jsx"
 
 export default function QuestionPage() {
+    const navigate=useNavigate();
   const [inst, setinst] = useState(false);
   const [ques, setques] = useState([]);
   const [tempques, settempques] = useState({
@@ -19,8 +22,7 @@ export default function QuestionPage() {
   });
 
   const [response, setResponse] = useState([]);
-  const answers = [];
-
+  
   
   
 
@@ -37,14 +39,12 @@ export default function QuestionPage() {
     }
   }
 
-  function finalSubmit(QuesNo) {}
-
   function optionClicked(optionSelected, quesNo) {
     console.log(optionSelected);
     console.log(quesNo);
     response[quesNo] = optionSelected;
-    console.log(answers[quesNo]);
-    console.log(response[quesNo]);
+    // console.log(answers[quesNo]);
+    // console.log(response[quesNo]);
     //   if(optionSelected === tempques.ans){
     //       x = 1;
     //   }else{
@@ -62,8 +62,8 @@ export default function QuestionPage() {
         setques(ques);
         settempques({ ...ques[0] });
         console.log(tempques);
-        checkAnswer();
-        console.log("vskjvbjk",answers)
+        
+        
       } else {
         console.log("No such document!");
       }
@@ -71,10 +71,20 @@ export default function QuestionPage() {
 
   }, []);
 
-
-  function checkAnswer(){
-    ques.map((item) => {answers.push(item.ans)}); 
+ var score = 0;
+  function finalSubmit(){
+    ques.map( (item , index) => {
+        if(item.ans === response[index+1]){
+            score = score +1;
+        }else{
+            score = score -1;
+        }
+        console.log("result" ,score);
+    } )
+    
+    navigate("/result");
     }
+    
 
  
   return (
@@ -85,6 +95,7 @@ export default function QuestionPage() {
         {inst ? (
           <>
             <div
+            
               className="col-md-2"
               style={{
                 marginLeft: -250,
@@ -108,6 +119,9 @@ export default function QuestionPage() {
                   Option2={tempques.oB}
                   Option3={tempques.oC}
                   Option4={tempques.oD}
+                  QuesLength={ques.length}
+                
+                  img={require('../Images/quesimg.jpg')}
                   onClickNext={() => nextQues(tempques.id)}
                   optionChecked={optionClicked}
                   onClickPrevious={() => {
@@ -134,8 +148,11 @@ export default function QuestionPage() {
                 {ques.map((item) => {
                   return (
                     <button
+                    style ={{backgroundColor:"#CCD1E4"}}
                       onClick={() => {
+                        
                         settempques({ ...ques[item.id - 1] });
+                        
                       }}
                       key={item.id}
                       className="block"
@@ -149,6 +166,10 @@ export default function QuestionPage() {
           </>
         ) : (
           <div>
+          <div className="row d-flex justify-content-center align-text-center p-3" style={{marginLeft:350,marginTop:50,marginBottom:50}}>
+          <div >
+              <Instructions/>
+          </div>
             <div>
               <button
                 onClick={() => {
@@ -164,8 +185,9 @@ export default function QuestionPage() {
                   borderColor: "black",
                 }}
               >
-                Submit
+               Start
               </button>
+            </div>
             </div>
           </div>
         )}
