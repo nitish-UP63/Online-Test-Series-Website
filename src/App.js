@@ -11,6 +11,7 @@ import Profile from './component/Profile';
 import { useSelector } from 'react-redux';
 import HomeCategory from './component/HomeCategory';
 import QuestionPage from './component/QuestionPage';
+import Result from './component/Result';
 export default function App() {
   const isloggedin=useSelector((state)=> state.set_user_state);
    const {papertitle, paperyear}= useParams();
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/result" element={<Result />} />
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/HomeCategory" >
            <Route path=":papertitle" element={<HomeCategory />} >
