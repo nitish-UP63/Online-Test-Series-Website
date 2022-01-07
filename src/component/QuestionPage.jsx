@@ -3,7 +3,6 @@ import Question from "./Question.jsx";
 import DB from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
 import "./questionPage.css";
-import { borderRadius } from "@mui/system";
 import Timer from "./Timer.jsx";
 
 export default function QuestionPage() {

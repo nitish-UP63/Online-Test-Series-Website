@@ -98,6 +98,7 @@ export default function Question(props) {
                     marginRight: 10,
                     verticalAlign: "middle",
                     marginTop: -2,
+                    
                   }}
                 />{" "}
                 c. {props.Option3}

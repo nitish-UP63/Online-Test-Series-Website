@@ -8,7 +8,9 @@ import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthPro
 import { doc, setDoc, Timestamp } from "firebase/firestore";
 import db from './firebase';
 import {useNavigate} from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
 function Register() {
+  const [loading, setloading]=useState(false);
   const navigate=useNavigate();
     const [userdetail, setuserdetail] = useState({
         name: '',
@@ -26,6 +28,11 @@ function Register() {
     }
 
   const registeruser = () => {
+    if(userdetail.name==='' || userdetail.email==='' || userdetail.password==='')
+    {
+     alert("Plase enter all field");
+    }else{
+    setloading(true)  
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, userdetail.email, userdetail.password)
       .then((userCredential) => {
@@ -37,13 +44,17 @@ function Register() {
             email: userdetail.email,
             password: userdetail.password
           });
+        setloading(false);  
         navigate("/")  
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        alert("Error")
+        setloading(false)
         // ..
       });
+    }
   };
 
 //////////////////google login
@@ -64,7 +75,7 @@ function login_with_google(){
         email: user.providerData[0].email,
         url : user.providerData[0].photoURL
       });
-      
+      navigate("/");
       // ...
     }).catch((error) => {
       // Handle Errors here.
@@ -104,8 +115,8 @@ function login_with_google(){
             <Form.Label>Confirm Password</Form.Label>
             <Form.Control type="confirm-password" placeholder="Password"   onChange={handlechange} />
           </Form.Group>
-
-          <Button
+{ loading ? <div className="loader"> <CircularProgress /> </div>
+         : <Button
             style={{ marginLeft: 100 }}
             clasName="btn"
             variant="primary"
@@ -114,6 +125,7 @@ function login_with_google(){
           >
             Submit
           </Button>
+}
           <div
             style={{
               display: "flex",

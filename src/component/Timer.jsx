@@ -1,4 +1,3 @@
-import { positions, textAlign } from '@mui/system';
 import React, { useState, useEffect } from 'react'
 
 export default function Timer(props) {
