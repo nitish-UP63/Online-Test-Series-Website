@@ -70,10 +70,10 @@ export default function Question(props) {
         document.getElementById("oB").checked = false;
         document.getElementById("oC").checked = false;
         document.getElementById("oD").checked = false;
+    
   }
 
   return (
-    <div>
     <div>
       <div style={{ transform: "scale(0.65)", position: "relative" }}>
         <h3>
@@ -216,7 +216,6 @@ export default function Question(props) {
         >
           Submit
         </button>
-      </div>
       </div>
     </div>
   );

@@ -40,6 +40,8 @@ export default function QuestionPage() {
     }
   }
 
+ 
+
   function optionClicked(optionSelected, quesNo) {
     console.log(optionSelected);
     console.log(quesNo);
