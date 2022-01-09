@@ -5,12 +5,13 @@ import { Setuserstate, Setuserdata } from "../actions/index";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import db from './firebase';
 import { useForm } from "react-hook-form";
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function Profile() {
   const dispatch= useDispatch();  
   const userdetail = useSelector((state) => state.set_user_data);
   const uid= useSelector((state)=> state.set_user_id);
-
+  const [loading, setloading]= useState(false);
   const [update, setupdate] = useState({
     name: userdetail.name,
     email: userdetail.email,
@@ -31,9 +32,16 @@ export default function Profile() {
 
 ////////////update
 function update_profile(){
+  setloading(true);
 const updateref = doc(db, "users", uid);
  updateDoc(updateref, {
   ...update,
+}).then(()=>{
+  alert("saved")
+  setloading(false);
+}).catch(()=>{
+  alert("error")
+  setloading(false)
 });
 ///update detail in store
 getDoc( doc(db, "users", uid)).then(docSnap => {
@@ -133,13 +141,14 @@ getDoc( doc(db, "users", uid)).then(docSnap => {
                 </div>
               </div>
               <div className="mt-5 text-center">
-                <button
+              { loading ? <CircularProgress /> :  <button
                   className="btn btn-primary profile-button"
                   type="button"
                   onClick={update_profile}
                 >
                   Save Profile
                 </button>
+              }
               </div>
 
             </div>

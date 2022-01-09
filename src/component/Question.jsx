@@ -1,6 +1,20 @@
 import React,{useState} from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {Setuserans} from '../actions/index';
 
 export default function Question(props) {
+  const User_ans= useSelector((state)=> state.set_user_ans);
+  const dispatch= useDispatch();
+  const [ischecked, setchecked]= useState();
+  //const [ans10, setans10]=useState([]);
+
+  function han_change(event)
+  {
+   const {id, value}= event.target;
+   console.log(value);
+   console.log( props.QuesNo)
+   dispatch(Setuserans(parseInt(props.QuesNo), id,  value, true)); 
+  }
 
     let x = false;
     let y = false;
@@ -31,24 +45,34 @@ export default function Question(props) {
   }
    
 
-  function handleOnClickPrevious() {
+ async function  handleOnClickPrevious() {
+  await  props.onClickPrevious(props.QuesNo);
+   User_ans.map((item)=>{
+      console.log(item.id, parseInt(props.QuesNo-1));
+      if(item.id=== parseInt(props.QuesNo-1)){
+       console.log(item);
+       {document.getElementById(item.ansID).checked= true}
+       console.log(document.getElementById(item.ansID));
+      }
+    })
 
-    if(document.getElementById("oA").checked){
-        props.optionChecked(props.Option1,props.QuesNo);
-    }
-    if(document.getElementById("oB").checked){
-        props.optionChecked(props.Option2,props.QuesNo);
-    }
-    if(document.getElementById("oC").checked){
-        props.optionChecked(props.Option3,props.QuesNo);
-    }
-    if(document.getElementById("oD").checked){
-        props.optionChecked(props.Option4,props.QuesNo);
-    }
-    props.onClickPrevious(props.QuesNo);
+    // if(document.getElementById("oA").checked){
+    //     props.optionChecked(props.Option1,props.QuesNo);
+    // }
+    // if(document.getElementById("oB").checked){
+    //     props.optionChecked(props.Option2,props.QuesNo);
+    // }
+    // if(document.getElementById("oC").checked){
+    //     props.optionChecked(props.Option3,props.QuesNo);
+    // }
+    // if(document.getElementById("oD").checked){
+    //     props.optionChecked(props.Option4,props.QuesNo);
+    // }
+    // props.onClickPrevious(props.QuesNo);
   }
 
   function handleOnClickSubmit() {
+   // console.log(ans10);
       
     if(document.getElementById("oA").checked){
         props.optionChecked(props.Option1,props.QuesNo);
@@ -90,6 +114,9 @@ export default function Question(props) {
                   type="radio"
                   name="option"
                   id="oA"
+                  value={props.Option1}
+                  checked={ischecked}
+                  onChange={han_change}
                   style={{
                     transform: "scale(1.6)",
                     marginRight: 10,
@@ -109,6 +136,9 @@ export default function Question(props) {
                   type="radio"
                   name="option"
                   id="oB"
+                  value={props.Option2}
+                  checked={ischecked}
+                  onChange={han_change}
                   style={{
                     transform: "scale(1.6)",
                     marginRight: 10,
@@ -128,6 +158,9 @@ export default function Question(props) {
                   type="radio"
                   name="option"
                   id="oC"
+                  value={props.Option3}
+                  onChange={han_change}
+                  checked={ischecked}
                   style={{
                     transform: "scale(1.6)",
                     marginRight: 10,
@@ -148,6 +181,9 @@ export default function Question(props) {
                   type="radio"
                   name="option"
                   id="oD"
+                  value={props.Option4}
+                  checked={ischecked}
+                  onChange={han_change}
                   style={{
                     transform: "scale(1.6)",
                     marginRight: 10,

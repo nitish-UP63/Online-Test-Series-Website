@@ -9,3 +9,11 @@ export const Setuserdata = data => {
   export const Setuid = id => {
     return {type: 'User_id', id: id};
   };
+
+  export const Setscore = score => {
+    return {type: 'User_score', score: score};
+  };
+
+  export const Setuserans = (id, ansID,  ans, checked) => {
+    return {type: 'User_ans', ans: ans, ansID: ansID, id: id, checked: checked};
+  };
