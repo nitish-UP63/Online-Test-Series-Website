@@ -3,12 +3,14 @@ import Question from "./Question.jsx";
 import DB from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
 import "./questionPage.css";
-import { borderRadius } from "@mui/system";
 import Timer from "./Timer.jsx";
 import { useNavigate } from "react-router-dom"; 
 import Instructions from "./Instructions.jsx"
+import { useSelector, useDispatch } from "react-redux";
+import {Setscore} from '../actions/index';
 
 export default function QuestionPage() {
+  const dispatch= useDispatch();
     const navigate=useNavigate();
   const [inst, setinst] = useState(false);
   const [ques, setques] = useState([]);
@@ -47,7 +49,7 @@ export default function QuestionPage() {
     console.log(quesNo);
     response[quesNo] = optionSelected;
     // console.log(answers[quesNo]);
-    // console.log(response[quesNo]);
+    console.log(response[quesNo]);
     //   if(optionSelected === tempques.ans){
     //       x = 1;
     //   }else{
@@ -64,14 +66,11 @@ export default function QuestionPage() {
         console.log(ques);
         setques(ques);
         settempques({ ...ques[0] });
-        console.log(tempques);
-        
-        
+        console.log(tempques);  
       } else {
         console.log("No such document!");
       }
     });
-
   }, []);
 
  var score = 0;
@@ -79,12 +78,16 @@ export default function QuestionPage() {
     ques.map( (item , index) => {
         if(item.ans === response[index+1]){
             score = score +1;
-        }else{
+        }else if(response[index+1]===null)
+        {
+          score=score;
+        }
+        else{
             score = score -1;
         }
         console.log("result" ,score);
     } )
-    
+    dispatch(Setscore(score));
     navigate("/result");
     }
     

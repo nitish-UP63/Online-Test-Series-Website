@@ -8,9 +8,10 @@ import db from "./firebase";
 import {doc, getDoc, setDoc } from "firebase/firestore";
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signInWithPopup, GoogleAuthProvider  } from "firebase/auth";
 import {useNavigate} from 'react-router-dom';
-
+import CircularProgress from '@mui/material/CircularProgress';
 
 function Login() {
+  const [loading, setloading]= useState(false);
   const navigate= useNavigate();
   const [logindetail, setlogindetail]= useState({
       email: '',
@@ -28,12 +29,14 @@ const handlechange=(event)=>{
 }
 
   function userlogin(){
+    setloading(true);
   const auth = getAuth();
   signInWithEmailAndPassword(auth, logindetail.email, logindetail.password)
     .then((userCredential) => {
       // Signed in
       // const user = userCredential.user;
       // console.log(user);
+      setloading(false);
       navigate("/");
       setlogindetail(()=>{
           return {  email: '', password: ''
@@ -44,7 +47,8 @@ const handlechange=(event)=>{
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorMessage);
+      alert("Error")
+      setloading(false);
     });
   }
 //////////////////google login
@@ -65,7 +69,7 @@ signInWithPopup(auth, provider)
       email: user.providerData[0].email,
       url : user.providerData[0].photoURL
     });
-    
+    navigate("/");
     // ...
   }).catch((error) => {
     // Handle Errors here.
@@ -117,14 +121,14 @@ onAuthStateChanged(auth, (user) => {
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
             <Form.Check type="checkbox" label="Check me out" />
           </Form.Group>
-          <Button
+       { loading ? <div className="loader"> <CircularProgress size={30} /> </div>:  <Button
             style={{ marginLeft: 100 }}
             clasName="btn"
             variant="primary"
             size="lg"
           onClick={userlogin} >
             Submit
-          </Button>
+          </Button> }
           <div
             style={{
               display: "flex",

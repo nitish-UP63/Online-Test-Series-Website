@@ -9,6 +9,7 @@ import { Button } from "react-bootstrap";
 import logout from "./logout";
 import {useSelector, useDispatch} from 'react-redux';
 import {Setuserstate, Setuserdata, Setuid} from '../actions/index';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function Navbar() {
   const dispatch= useDispatch();
@@ -74,7 +75,7 @@ function Navbar() {
               <NavLink to="/contactus">Contact Us</NavLink>{" "}
             </li>
             { islogged ? <>
-             {isloading ? <p>hmm</p> : <>
+             {isloading ?   <CircularProgress size={30} /> : <>
             <li className="navitem navbar-item">
               <NavLink to="/profile">Profile</NavLink>
             </li>
