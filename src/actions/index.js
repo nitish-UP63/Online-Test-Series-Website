@@ -17,3 +17,7 @@ export const Setuserdata = data => {
   export const Setuserans = (id, ansID,  ans, checked) => {
     return {type: 'User_ans', ans: ans, ansID: ansID, id: id, checked: checked};
   };
+
+  export const Setclearans = (arr) => {
+    return {type: 'Clear_ans', arr: arr};
+  };
