@@ -1,68 +1,86 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {Setclearans, Setuserans} from '../actions/index';
+import { Setclearans, Setuserans } from "../actions/index";
 
 export default function Question(props) {
-  const User_ans= useSelector((state)=> state.set_user_ans);
-  const dispatch= useDispatch();
+  const User_ans = useSelector((state) => state.set_user_ans);
+  const dispatch = useDispatch();
 
-  function han_change(event)
-  {
-   const {id, value}= event.target;
-   console.log(value);
-   console.log( props.QuesNo)
-   dispatch(Setuserans(parseInt(props.QuesNo), id,  value, true)); 
-  }
-
-    let x = false;
-    let y = false;
-    if(props.QuesNo == props.QuesLength){
-        y=true;
-    }
-    if(props.QuesNo < 2){
-        x=true;
-    }
-    
-    
- async function handleOnClickNext() {
-    await props.onClickNext(props.QuesNo);
-    User_ans.map((item)=>{
-       console.log(item.id, parseInt(props.QuesNo+1));
-       if(item.id=== parseInt(props.QuesNo+1)){
-        console.log(item);
-        {document.getElementById(item.ansID).checked= true}
-        console.log(document.getElementById(item.ansID));
-       }
-     })
-  }
-   
-
- async function  handleOnClickPrevious() {
-  await  props.onClickPrevious(props.QuesNo);
-   User_ans.map((item)=>{
-      console.log(item.id, parseInt(props.QuesNo-1));
-      if(item.id=== parseInt(props.QuesNo-1)){
-       console.log(item);
-       {document.getElementById(item.ansID).checked= true}
-       console.log(document.getElementById(item.ansID));
+  var stateChange = true;
+  if (stateChange === !stateChange) {
+    User_ans.map((item) => {
+      console.log("hii1",item.id, parseInt(props.QuesNo));
+      if (item.id === parseInt(props.QuesNo)) {
+        console.log("hii2",item);
+        {
+          document.getElementById(item.ansID).checked = true;
+        }
+        console.log("hii3",document.getElementById(item.ansID));
       }
-    })
+    });
+  }
+
+  stateChange = !stateChange
+
+
+  function han_change(event) {
+    const { id, value } = event.target;
+    console.log(value);
+    console.log(props.QuesNo);
+    dispatch(Setuserans(parseInt(props.QuesNo), id, value, true));
+  }
+
+  let x = false;
+  let y = false;
+  if (props.QuesNo == props.QuesLength) {
+    y = true;
+  }
+  if (props.QuesNo < 2) {
+    x = true;
+  }
+
+  async function handleOnClickNext() {
+    await props.onClickNext(props.QuesNo);
+    // User_ans.map((item) => {
+    //   console.log(item.id, parseInt(props.QuesNo + 1));
+    //   if (item.id === parseInt(props.QuesNo + 1)) {
+    //     console.log(item);
+    //     {
+    //       document.getElementById(item.ansID).checked = true;
+    //     }
+    //     console.log(document.getElementById(item.ansID));
+    //   }
+    // });
+  }
+
+  async function handleOnClickPrevious() {
+    await props.onClickPrevious(props.QuesNo);
+    // User_ans.map((item) => {
+    //   console.log(item.id, parseInt(props.QuesNo - 1));
+    //   if (item.id === parseInt(props.QuesNo - 1)) {
+    //     console.log(item);
+    //     {
+    //       document.getElementById(item.ansID).checked = true;
+    //     }
+    //     console.log(document.getElementById(item.ansID));
+    //   }
+    // });
   }
 
   function handleOnClickSubmit() {
-      props.onClickSubmit();
+    props.onClickSubmit();
   }
 
-  function handleOnClickClear(){
-     const temp=User_ans.filter((item)=>{
-               return item.id!=props.QuesNo;
-     })
-  console.log(temp)
-  document.getElementById("oA").checked = false;
-  document.getElementById("oB").checked = false;
-  document.getElementById("oC").checked = false;
-  document.getElementById("oD").checked = false;
-  dispatch(Setclearans(temp));
+  function handleOnClickClear() {
+    const temp = User_ans.filter((item) => {
+      return item.id != props.QuesNo;
+    });
+    console.log(temp);
+    document.getElementById("oA").checked = false;
+    document.getElementById("oB").checked = false;
+    document.getElementById("oC").checked = false;
+    document.getElementById("oD").checked = false;
+    dispatch(Setclearans(temp));
   }
 
   return (
@@ -77,13 +95,12 @@ export default function Question(props) {
         <div className="row">
           <div className="col-md-6">
             <div id="block-11" style={{ padding: 10 }}>
-              <label for='oA' style={{ padding: 5, fontSize: 21 }}>
+              <label for="oA" style={{ padding: 5, fontSize: 21 }}>
                 <input
                   type="radio"
                   name="option"
                   id="oA"
                   value={props.Option1}
-                  
                   onChange={han_change}
                   style={{
                     transform: "scale(1.6)",
@@ -99,13 +116,12 @@ export default function Question(props) {
             <hr />
 
             <div id="block-12" style={{ padding: 10 }}>
-              <label for='oB' style={{ padding: 5, fontSize: 21 }}>
+              <label for="oB" style={{ padding: 5, fontSize: 21 }}>
                 <input
                   type="radio"
                   name="option"
                   id="oB"
                   value={props.Option2}
-                   
                   onChange={han_change}
                   style={{
                     transform: "scale(1.6)",
@@ -121,7 +137,7 @@ export default function Question(props) {
             <hr />
 
             <div id="block-13" style={{ padding: 10 }}>
-              <label for='oC' style={{ padding: 5, fontSize: 21 }}>
+              <label for="oC" style={{ padding: 5, fontSize: 21 }}>
                 <input
                   type="radio"
                   name="option"
@@ -133,7 +149,6 @@ export default function Question(props) {
                     marginRight: 10,
                     verticalAlign: "middle",
                     marginTop: -2,
-                    
                   }}
                 />{" "}
                 c. {props.Option3}
@@ -143,7 +158,7 @@ export default function Question(props) {
             <hr />
 
             <div id="block-14" style={{ padding: 10 }}>
-              <label for='oD' style={{ padding: 5, fontSize: 21 }}>
+              <label for="oD" style={{ padding: 5, fontSize: 21 }}>
                 <input
                   type="radio"
                   name="option"
@@ -166,11 +181,7 @@ export default function Question(props) {
 
           <div className="col-md-6 d-flex justify">
             <div style={{ margin: 100 }}>
-              <img
-                width={"250px"}
-                height={"250px"}
-                src={props.img}
-              />
+              <img width={"250px"} height={"250px"} src={props.img} />
             </div>
           </div>
         </div>
@@ -180,7 +191,7 @@ export default function Question(props) {
               onClick={handleOnClickPrevious}
               className="btn btn-primary btn-block"
               type="button"
-              disabled = {x && true}
+              disabled={x && true}
             >
               Previous
             </button>
@@ -190,7 +201,7 @@ export default function Question(props) {
               onClick={handleOnClickNext}
               className="btn btn-primary  btn-block"
               type="button"
-              disabled = { y && true}
+              disabled={y && true}
             >
               Next
             </button>
@@ -201,7 +212,7 @@ export default function Question(props) {
               className="btn btn-primary btn-block"
               type="button"
             >
-             Clear option
+              Clear option
             </button>
           </div>
         </div>
@@ -223,7 +234,3 @@ export default function Question(props) {
     </div>
   );
 }
-
-
-
-

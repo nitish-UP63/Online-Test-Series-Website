@@ -4,14 +4,14 @@ import DB from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
 import "./questionPage.css";
 import Timer from "./Timer.jsx";
-import { useNavigate } from "react-router-dom"; 
-import Instructions from "./Instructions.jsx"
+import { useNavigate } from "react-router-dom";
+import Instructions from "./Instructions.jsx";
 import { useSelector, useDispatch } from "react-redux";
-import {Setscore} from '../actions/index';
+import { Setscore } from "../actions/index";
 
 export default function QuestionPage() {
-  const dispatch= useDispatch();
-    const navigate=useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [inst, setinst] = useState(false);
   const [ques, setques] = useState([]);
   const [tempques, settempques] = useState({
@@ -25,9 +25,6 @@ export default function QuestionPage() {
   });
 
   const [response, setResponse] = useState([]);
-  
-  
-  
 
   function previousQues(QuesNo) {
     if (QuesNo > 1) {
@@ -42,21 +39,19 @@ export default function QuestionPage() {
     }
   }
 
- 
-
-  function optionClicked(optionSelected, quesNo) {
-    console.log(optionSelected);
-    console.log(quesNo);
-    response[quesNo] = optionSelected;
+//   function optionClicked(optionSelected, quesNo) {
+    // console.log(optionSelected);
+    // console.log(quesNo);
+    // response[quesNo] = optionSelected;
     // console.log(answers[quesNo]);
-    console.log(response[quesNo]);
+    // console.log(response[quesNo]);
     //   if(optionSelected === tempques.ans){
     //       x = 1;
     //   }else{
     //       x = -1;
 
     //   }';
-  }
+//   }
 
   useEffect(() => {
     getDoc(doc(DB, "question_paper", "JeeMain2021")).then((docSnap) => {
@@ -66,42 +61,35 @@ export default function QuestionPage() {
         console.log(ques);
         setques(ques);
         settempques({ ...ques[0] });
-        console.log(tempques);  
+        console.log(tempques);
       } else {
         console.log("No such document!");
       }
     });
   }, []);
 
- var score = 0;
-  function finalSubmit(){
-    ques.map( (item , index) => {
-        if(item.ans === response[index+1]){
-            score = score +1;
-        }else if(response[index+1]===null)
-        {
-          score=score;
-        }
-        else{
-            score = score -1;
-        }
-        console.log("result" ,score);
-    } )
-    dispatch(Setscore(score));
+  var score = 0;
+  function finalSubmit() {
+    ques.map((item, index) => {
+      //   if (item.ans === response[index + 1]) {
+      //     score = score + 1;
+      //   } else if (response[index + 1] === null) {
+      //     score = score;
+      //   } else {
+      //     score = score - 1;
+      //   }
+      //   console.log("result", score);
+    });
+    // dispatch(Setscore(score));
     navigate("/result");
-    }
-    
+  }
 
- 
   return (
-    
     <div style={{ overflow: "hidden" }}>
-    
       <div className="row d-flex justify-content-between align-items-center">
         {inst ? (
           <>
             <div
-            
               className="col-md-2"
               style={{
                 marginLeft: -250,
@@ -126,10 +114,9 @@ export default function QuestionPage() {
                   Option3={tempques.oC}
                   Option4={tempques.oD}
                   QuesLength={ques.length}
-                
-                  img={require('../Images/quesimg.jpg')}
+                  img={require("../Images/quesimg.jpg")}
                   onClickNext={() => nextQues(tempques.id)}
-                  optionChecked={optionClicked}
+                //   optionChecked={optionClicked}
                   onClickPrevious={() => {
                     previousQues(tempques.id);
                   }}
@@ -154,11 +141,10 @@ export default function QuestionPage() {
                 {ques.map((item) => {
                   return (
                     <button
-                    style ={{backgroundColor:"#CCD1E4"}}
+                      style={{ backgroundColor: "#CCD1E4" }}
                       onClick={() => {
-                        
                         settempques({ ...ques[item.id - 1] });
-                        
+                       
                       }}
                       key={item.id}
                       className="block"
@@ -172,28 +158,31 @@ export default function QuestionPage() {
           </>
         ) : (
           <div>
-          <div className="row d-flex justify-content-center align-text-center p-3" style={{marginLeft:350,marginTop:50,marginBottom:50}}>
-          <div >
-              <Instructions/>
-          </div>
-            <div>
-              <button
-                onClick={() => {
-                  setinst(true);
-                }}
-                type="button"
-                className="btn outline-primary"
-                style={{
-                  width: 100,
-                  height: 40,
-                  borderRadius: 3,
-                  fontWeight: 700,
-                  borderColor: "black",
-                }}
-              >
-               Start
-              </button>
-            </div>
+            <div
+              className="row d-flex justify-content-center align-text-center p-3"
+              style={{ marginLeft: 350, marginTop: 50, marginBottom: 50 }}
+            >
+              <div>
+                <Instructions />
+              </div>
+              <div>
+                <button
+                  onClick={() => {
+                    setinst(true);
+                  }}
+                  type="button"
+                  className="btn outline-primary"
+                  style={{
+                    width: 100,
+                    height: 40,
+                    borderRadius: 3,
+                    fontWeight: 700,
+                    borderColor: "black",
+                  }}
+                >
+                  Start
+                </button>
+              </div>
             </div>
           </div>
         )}
