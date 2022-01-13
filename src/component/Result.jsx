@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import DB from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
 
+
 export default function Result(props) {
+  const userdetail = useSelector((state) => state.set_user_data);
   const [score, setscore] = useState(0);
   const User_ans = useSelector((state) => state.set_user_ans);
 
@@ -76,19 +78,33 @@ export default function Result(props) {
         style={{ margin: 30 }}
       >
         <div className="row">
-          <div className="col-md-6">Name - Hello</div>
+          <div className="col-md-4">
+          <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+              <img
+                className="rounded-circle mt-5"
+                width="150px"
+                src= {userdetail.url ? userdetail.url : "https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"}
+              />
+              <br />
+              <span className="font-weight-bold">{userdetail.name}</span>
+            </div>
+         </div>
           <div className="col-md-6">
-            Your Score - {score} <br /> Total Score - 10
+            Your Score : {score} <br /> Total Score : 10
           </div>
         </div>
       </div>
       <div>
         <div>
-          <div>
-            <button onClick={resultCalculator}>
+          <div style ={{marginLeft:100,marginRight:100}}>
+            <button onClick={resultCalculator} style={{marginLeft:30}} className="btn btn-primary btn-block">
               {" "}
-              {condition ? <p>Hide Answer</p> : <p>Show Answer</p>}{" "}
+              {condition ? <p>Hide Answer</p> : <p>Show Score</p>}{" "}
             </button>
+            <br />
+            <br />
+            <br />
+            <hr />
             {console.log("999", AllQuesans)}
             {console.log(answers)}
             {condition &&
@@ -99,38 +115,23 @@ export default function Result(props) {
                     key={element.quesNo}
                     className="d-flex"
                     style={{
-                      padding: 20,
-                      border: "solid",
-                      backgroundColor: "red",
-                      borderColor: "black",
+                      paddingLeft: 60,
+                      paddingRight:60
                     }}
-                  >
-                    <p>Ques No. {element.quesNo}</p>
+                  > 
+                    <p><b>Ques No. {element.quesNo}</b>
                     <br />
-                    <p>{element.ques}</p>
+                    <p style={{padding:15}}>{element.ques}
                     <br />
-                    <p>Correct Ans - {element.correctAns}</p>
-                    <p>Your Ans - {element.checkedAnswer}</p>
+                    <br />
+                    <b >Correct Ans :</b>{"  "+element.correctAns}
+                    <br />
+                    <b >Your Ans :</b>{"  "+element.checkedAnswer}</p>
+                    <hr /></p>
+                       
                   </div>
                 );
               })}
-
-            {/* {
-                 Ques.map((item1) => {
-            alert("hi")
-            console.log( "bqbdiwu",item1)
-            return(
-            <div className="d-flex" style={{padding:20,height:25,width:40,border:"solid",backgroundColor:"red", borderColor:"black"}}>
-                Ques No . - {item1.id}
-                {item1.Question}
-                Correct Answer - {item1.ans}
-                Your Answer -  
-                <hr />
-                <br />
-            </div>   
-        );
-        }) } */}
-            {/* {alert("last")} */}
           </div>
         </div>
       </div>

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 
 export default function Timer(props) {
 
-    
-
     const [seconds, setSeconds] = useState(0);
     const [minutes, setMinutes] = useState(props.minutes);
 
@@ -16,6 +14,7 @@ export default function Timer(props) {
             if (seconds === 0) {
                 if (minutes === 0) {
                     clearInterval(myInterval)
+                    props.onClickSubmit();
                 } else {
                     setMinutes(minutes - 1);
                     setSeconds(59);
