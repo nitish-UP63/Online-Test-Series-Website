@@ -23,6 +23,8 @@ export default function QuestionPage() {
     ans: "",
     id: 0,
   });
+  const User_ans = useSelector((state) => state.set_user_ans);
+  const [BGcolor ,setBGcolor] =useState(false);
 
   const [response, setResponse] = useState([]);
 
@@ -38,20 +40,6 @@ export default function QuestionPage() {
       settempques({ ...ques[QuesNo] });
     }
   }
-
-//   function optionClicked(optionSelected, quesNo) {
-    // console.log(optionSelected);
-    // console.log(quesNo);
-    // response[quesNo] = optionSelected;
-    // console.log(answers[quesNo]);
-    // console.log(response[quesNo]);
-    //   if(optionSelected === tempques.ans){
-    //       x = 1;
-    //   }else{
-    //       x = -1;
-
-    //   }';
-//   }
 
   useEffect(() => {
     getDoc(doc(DB, "question_paper", "JeeMain2021")).then((docSnap) => {
@@ -70,17 +58,6 @@ export default function QuestionPage() {
 
   var score = 0;
   function finalSubmit() {
-    ques.map((item, index) => {
-      //   if (item.ans === response[index + 1]) {
-      //     score = score + 1;
-      //   } else if (response[index + 1] === null) {
-      //     score = score;
-      //   } else {
-      //     score = score - 1;
-      //   }
-      //   console.log("result", score);
-    });
-    // dispatch(Setscore(score));
     navigate("/result");
   }
 
@@ -101,7 +78,7 @@ export default function QuestionPage() {
                 justifyContent: "flex-end",
               }}
             >
-              <Timer minutes={60} />
+              <Timer minutes={1} onClickSubmit={finalSubmit}  />
             </div>
             <div className="col-md-8 border-right d-flex flex-column">
               {
@@ -139,18 +116,27 @@ export default function QuestionPage() {
                 }}
               >
                 {ques.map((item) => {
+                  
                   return (
-                    <button
-                      style={{ backgroundColor: "#CCD1E4" }}
+                   <>
+                    {/* {User_ans.map((item1) => {
+                          if(item1.id === item.id){
+                            setBGcolor(!BGcolor);
+                          }
+                        })} */}
+                        
+                    <button 
                       onClick={() => {
                         settempques({ ...ques[item.id - 1] });
-                       
+                        
                       }}
+                      style={{ backgroundColor: BGcolor ? "green" :"#CCD1E4" }}
                       key={item.id}
                       className="block"
                     >
                       {item.id}
                     </button>
+                    </>
                   );
                 })}
               </div>
