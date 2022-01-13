@@ -50,3 +50,11 @@
   nav li{
 	list-style: none;
 }
+
+@media (max-width: 533px){
+img {
+    height: 300px;
+    width: 100% !important;
+}
+ 
+}

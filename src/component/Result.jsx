@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import DB from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
-import { autocompleteClasses } from "@mui/material";
-import { borderColor } from "@mui/system";
+
 
 export default function Result(props) {
   const [score, setscore] = useState(0);
@@ -12,7 +11,7 @@ export default function Result(props) {
   const [ AllQuesans,setAllQues ] = useState([]);
 
   var Ques = [];
-  var Ques1 =[];
+  var Ques1;
   
 
   useEffect(() => {
@@ -34,12 +33,13 @@ export default function Result(props) {
   await  Ques1.map((item) => {
       setAllQues( (AllQuesans) => [...AllQuesans , {quesNo:item.id,ques:item.Question,correctAns:item.ans}])
     })
-    console.log(AllQuesans);
+    // console.log("helo", AllQuesans);
   }
 
   var temp_ans = {};
   async function resultCalculator() {
   await  viewques();
+  console.log("helo", AllQuesans);
     alert("resultcal")
     console.log(Ques);
     console.log(User_ans);

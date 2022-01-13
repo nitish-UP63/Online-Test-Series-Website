@@ -49,7 +49,7 @@ function Navbar() {
         </div>
 
         <button
-          className="btn-dark navbar-toggler"
+          className="btn-danger navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNavDropdown"
@@ -61,6 +61,7 @@ function Navbar() {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
+        
           <ul className="navbar-nav ms-auto">
             <li className="navitem navbar-item">
               {" "}
