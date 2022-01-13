@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Setclearans, Setuserans } from "../actions/index";
 
@@ -39,11 +39,14 @@ export default function Question(props) {
     x = true;
   }
 
-  async function handleOnClickNext() {
-    await props.onClickNext(props.QuesNo);
+  useEffect(() => {
+    updateOption();
+  }, []);
+
+  function updateOption() {
     User_ans.map((item) => {
-      console.log(item.id, parseInt(props.QuesNo + 1));
-      if (item.id === parseInt(props.QuesNo + 1)) {
+      console.log(item.id, parseInt(props.QuesNo));
+      if (item.id === parseInt(props.QuesNo)) {
         console.log(item);
         {
           document.getElementById(item.ansID).checked = true;
@@ -53,18 +56,22 @@ export default function Question(props) {
     });
   }
 
-  async function handleOnClickPrevious() {
-    await props.onClickPrevious(props.QuesNo);
-    User_ans.map((item) => {
-      console.log(item.id, parseInt(props.QuesNo - 1));
-      if (item.id === parseInt(props.QuesNo - 1)) {
-        console.log(item);
-        {
-          document.getElementById(item.ansID).checked = true;
-        }
-        console.log(document.getElementById(item.ansID));
-      }
-    });
+  function handleOnClickNext() {
+    props.onClickNext(props.QuesNo); 
+  }
+
+   function handleOnClickPrevious() {
+     props.onClickPrevious(props.QuesNo);
+    // User_ans.map((item) => {
+    //   console.log(item.id, parseInt(props.QuesNo - 1));
+    //   if (item.id === parseInt(props.QuesNo - 1)) {
+    //     console.log(item);
+    //     {
+    //       document.getElementById(item.ansID).checked = true;
+    //     }
+    //     console.log(document.getElementById(item.ansID));
+    //   }
+    // });
   }
 
   function handleOnClickSubmit() {
