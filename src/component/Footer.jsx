@@ -8,15 +8,21 @@ function Footer() {
     return (
         <div className='footer'> 
         <div className='main'>
-            <div className='col1'>
+
+        <div className='row'>
+            <div>
+            <h3>Reach to Us</h3>
+            </div>
+        </div>
+            {/* <div className='col1'>
              <h1>Reach to Us</h1>
              <div className='reach'> 
              <p>Email</p>
              <p>Contact</p>
             
              </div>
-            </div>
-            <div className='col2'>
+            </div> */}
+            {/* <div className='col2'>
             <h1>Category</h1>
             <div className='category'>
                 <p>JEE Main</p>
@@ -33,7 +39,7 @@ function Footer() {
              <p>  <YouTubeIcon fontSize='5' />   Youtube</p>
              <p> <TwitterIcon fontSize='5' />   Twitter</p>
             </div>
-            </div>
+            </div> */}
         </div>
         </div>
     )
