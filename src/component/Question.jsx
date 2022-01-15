@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Setclearans, Setuserans } from "../actions/index";
+import './question.css';
 
 export default function Question(props) {
   const User_ans = useSelector((state) => state.set_user_ans);
@@ -81,7 +82,7 @@ export default function Question(props) {
   }
 
   return (
-    <div>
+    <div style={{marginTop: 0}}>
       <div style={{ transform: "scale(0.65)", position: "relative" }}>
         <h3>
           {props.QuesNo}. {props.Ques}
@@ -176,13 +177,13 @@ export default function Question(props) {
             <hr />
           </div>
 
-          <div className="col-md-6 d-flex justify">
+          {/* <div className="col-md-6 d-flex justify">
             <div style={{ margin: 100 }}>
               <img width={"250px"} height={"250px"} src={props.img} />
             </div>
-          </div>
+          </div> */}
         </div>
-        <div className="row">
+        <div className="d-flex flex-row justify-content-between">
           <div className="col-md-3 d-flex flex-column align-items-left text-center p- py-5">
             <button
               onClick={handleOnClickPrevious}
@@ -213,6 +214,7 @@ export default function Question(props) {
             </button>
           </div>
         </div>
+        <div className="d-flex flex-row justify-content-center">
         <button
           onClick={handleOnClickSubmit}
           type="button"
@@ -227,6 +229,7 @@ export default function Question(props) {
         >
           Submit
         </button>
+        </div>
       </div>
     </div>
   );

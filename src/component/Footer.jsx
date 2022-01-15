@@ -22,6 +22,8 @@ function Footer() {
               <TwitterIcon fontSize="5" />
             </div>
           </div>
+          <br />
+          <br /> <br />
           <hr />
           <div style={{textAlign:"center"}}>
           <p>Copyright ⓒ {year}</p>

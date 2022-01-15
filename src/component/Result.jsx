@@ -96,8 +96,8 @@ export default function Result(props) {
       </div>
       <div>
         <div>
-          <div style ={{marginLeft:100,marginRight:100}}>
-            <button onClick={resultCalculator} style={{marginLeft:30}} className="btn btn-primary btn-block">
+          <div>
+            <button onClick={resultCalculator} style={{marginLeft:0}} className="btn btn-primary btn-block">
               {" "}
               {condition ? <p>Hide Answer</p> : <p>Show Score</p>}{" "}
             </button>
@@ -113,21 +113,16 @@ export default function Result(props) {
                 return (
                   <div
                     key={element.quesNo}
-                    className="d-flex"
-                    style={{
-                      paddingLeft: 60,
-                      paddingRight:60
-                    }}
+                    
+                    
                   > 
-                    <p><b>Ques No. {element.quesNo}</b>
-                    <br />
-                    <p style={{padding:15}}>{element.ques}
-                    <br />
-                    <br />
-                    <b >Correct Ans :</b>{"  "+element.correctAns}
-                    <br />
+                    <p><b>Ques No. {element.quesNo}</b>:{" "} {element.ques} </p>
+                     
+                    <p>
+                    <b >Correct Ans :</b>{"  "+element.correctAns} </p>
+                    <p>
                     <b >Your Ans :</b>{"  "+element.checkedAnswer}</p>
-                    <hr /></p>
+                    <hr />
                        
                   </div>
                 );

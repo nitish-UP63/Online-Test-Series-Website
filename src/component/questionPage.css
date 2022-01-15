@@ -16,3 +16,23 @@
     background-color: #ddd;
     color: black;
   }
+  .timer{
+      margin-left: -250px;
+      margin-bottom: -160px;
+      width: 100%;
+      height: 32px;
+      display: flex;
+      justify-content: flex-end; 
+  }
+
+  @media (max-width: 533px) {
+    .timer{
+      margin-left: 0px;
+      margin-bottom: -100px;
+      width: 100%;
+      height: 32px;
+      display: flex;
+      justify-content: center; 
+  }
+ 
+  }

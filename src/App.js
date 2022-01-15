@@ -2,7 +2,7 @@ import React from 'react'
 import Footer from './component/Footer'
 import AboutUs from "./component/AboutUs"
 import Navbar from './component/Navbar'
-import { BrowserRouter, Routes, Route, Navigate, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Login from './component/Login';
 import Register from './component/Register';
 import Home from './component/Home';
@@ -14,7 +14,6 @@ import QuestionPage from './component/QuestionPage';
 import Result from './component/Result';
 export default function App() {
   const isloggedin=useSelector((state)=> state.set_user_state);
-   const {papertitle, paperyear}= useParams();
   return (
     <>
       <BrowserRouter>
