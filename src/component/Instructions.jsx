@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Instructions() {
   return (
-    <div className="col-md-8">
+    <div className="col-md-6">
       <div>
         <h1>Instructions</h1><br />
       </div>
